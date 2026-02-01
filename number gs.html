@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guessing game</title>
+</head>
+<body style="font-family:Arial;text-align:center;margin-top:40;">
+    <h2>Guess The number(1 to 20)</h2>
+    <input type="number" id="guess" placeholder="Enter number">
+    <button onclick="checkGuess()">click</button>
+    <button onclick="resetGame()"Reset>reset</button>
+    <p id="msg"></p>
+    <script>
+        let secret=Math.floor(Math.random()*100)+1
+        let attempts=0;
+
+        function checkGuess(){
+            let userGuess=Number(document.getElementById("guess").value);
+            attempts++;
+
+            if(userGuess== secret){
+                document.getElementById("msg").innerHTML="Correct! you have guessed in"+ attempts +"attempts";
+            }else if(userGuess < secret){
+                document.getElementById("msg").innerHTML="Too low!";
+            }
+            else{
+                document.getElementById("msg").innerHTML="Too Heigh!";
+            }
+            
+        }
+        function resetGame(){
+            secret=Math.floor(Math.random()*20)
+            attempts=0;
+            document.getElementById("guess").value="";
+            document.getElementById("msg").innerHTML="";
+        }
+    </script>
+    
+</body>
+</html>
